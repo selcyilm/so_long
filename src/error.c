@@ -8,6 +8,8 @@ void	error_msg(int num)
 		ft_printf("Error: Invalid File name!\n");
 	else if (num == 3)
 		ft_printf("Error: Opening file!\n");
+	else if (num == 4)
+		ft_printf("Error: Malloc failed!\n");
 
 	exit(1);
 }
