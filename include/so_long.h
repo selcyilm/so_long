@@ -17,6 +17,11 @@ typedef struct s_map
 	mlx_image_t	*space;
 	mlx_image_t	*collect;
 	char		**ber;
+	int			s_cnt;
+	int			w_cnt;
+	int			c_cnt;
+	int			e_cnt;
+	int			p_cnt;
 }	t_map;
 
 //ERROR MSG
@@ -24,7 +29,7 @@ void	error_msg(int num);
 void	free_matrix(char **str);
 
 //MAP CHECKING
-void	check_map_name(char *str);
+bool	check_map_name(char *str);
 
 //FILE
 int		line_count(char *file_name);

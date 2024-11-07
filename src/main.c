@@ -7,7 +7,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		error_msg(1);
-	check_map_name(av[1]);
+	if (check_map_name(av[1]) == false)
+		error_msg(2);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		error_msg(3);
 	map.ber = ber_read(av[1], line_count(av[1]));

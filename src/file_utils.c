@@ -1,16 +1,17 @@
 #include "../include/so_long.h"
 
 //check if the file name is valid .ber
-void	check_map_name(char *str)
+bool	check_map_name(char *str)
 {
 	while (*str != '.')
 	{
 		str++;
 		if (!*str)
-			error_msg(2);
+			return (false);
 	}
 	if (ft_strncmp(str, ".ber", ft_strlen(str)) != 0)
-		error_msg(2);
+		return (false);
+	return (true);
 }
 
 //create line count function

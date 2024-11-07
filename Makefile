@@ -8,6 +8,7 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 SRCS	=	./src/main.c \
 			./src/file_utils.c \
 			./src/error.c \
+			./src/map_validation.c \
 
 
 OBJS	= $(SRCS:.c=.o)
@@ -56,6 +57,9 @@ fclean: clean
 	@$(MAKE) -s -C lib/libft/ fclean
 	@rm -rf $(NAME)
 	@echo "$(COLOUR_BLUE)CLEANING EXECUTABLE FOR SO_LONG..$(RESET)"
+
+test:
+	$(CC) $(CFLAGS) tests/*.c -lcriterion $(LIBFT) include/so_long.h -o test_result
 
 re: clean all
 
