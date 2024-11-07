@@ -1,6 +1,6 @@
 #include "../include/so_long.h"
 
-int main()
+int	main(void)
 {
-	ft_printf("hello world!\n");
+	ft_printf("yoo");
 }
