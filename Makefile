@@ -7,6 +7,8 @@ HEADERS	= -I ./lib/libft/ -I ./include -I $(LIBMLX)/include/
 LIBS	= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 SRCS	=	./src/main.c \
 			./src/file_utils.c \
+			./src/error.c \
+
 
 OBJS	= $(SRCS:.c=.o)
 
