@@ -31,7 +31,7 @@ bool	check_invalid_char_map(char **str)
 		j = 0;
 		while (str[i][j] != '\0' && str[i][j] != '\n')
 		{
-			if (str[i][j] == '1' || str[i][j] == '0' || str[i][j] == 'C' /
+			if (str[i][j] == '1' || str[i][j] == '0' || str[i][j] == 'C' ||
 				str[i][j] == 'E' || str[i][j] == 'P')
 				j++;
 			else
@@ -77,9 +77,9 @@ bool	check_valid_number_of_chars(t_map *map)
 		return (false);
 	if (map->c_cnt == 0)
 		return (false);
-	if (map->e_cnt != 0)
+	if (map->e_cnt != 1)
 		return (false);
-	if (map->p_cnt != 0)
+	if (map->p_cnt != 1)
 		return (false);
 	return (true);
 }
@@ -107,7 +107,7 @@ bool	is_rectangle_map(char **str)
 }
 
 //check if surrounded by wals
-bool	check_wall_pos(char **str)
+bool	check_wall_pos(char **str, int line_count, int last_index)
 {
 	int	i;
 	int	j;
@@ -116,11 +116,19 @@ bool	check_wall_pos(char **str)
 	while (str[i])
 	{
 		j = 0;
-		while (str[i][j])
+		while (str[i][j] && str[i][j] != '\n')
 		{
-			if (i == 0 || j = )
+			if (i == 0 && str[i][j] != '1')
+				return (false);
+			if (i != 0 && j == 0 && str[i][j] != '1')
+				return (false);
+			if (i == line_count - 1 && str[i][j] != '1')
+				return (false);
+			if (i == last_index && str[i][j] != '1')
+				return (false);
+			j++;
 		}
+		i++;
 	}
+	return (true);
 }
-
-//check for valid path in the map

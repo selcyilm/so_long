@@ -10,6 +10,7 @@ void	error_msg(int num)
 		ft_printf("Error: Opening file!\n");
 	else if (num == 4)
 		ft_printf("Error: Malloc failed!\n");
-
+	else if (num == 5)
+		ft_printf("Error: Invalid Map!\n");
 	exit(1);
 }

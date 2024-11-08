@@ -9,6 +9,7 @@ SRCS	=	./src/main.c \
 			./src/file_utils.c \
 			./src/error.c \
 			./src/map_validation.c \
+			./src/valid_path_check.c \
 
 
 OBJS	= $(SRCS:.c=.o)

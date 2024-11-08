@@ -1,5 +1,14 @@
 #include "../include/so_long.h"
 
+void	check_if_file_valid(char *map_path, t_map *map)
+{
+
+	if (check_map_name(map_path) == false)
+		error_msg(2);
+	map->x = line_count(map_path);
+	map->ber = ber_read(map_path, map->x);
+}
+
 //check if the file name is valid .ber
 bool	check_map_name(char *str)
 {

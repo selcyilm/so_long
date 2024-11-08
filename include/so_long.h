@@ -22,17 +22,30 @@ typedef struct s_map
 	int			c_cnt;
 	int			e_cnt;
 	int			p_cnt;
+	int			x;
+	int			y;
 }	t_map;
 
-//ERROR MSG
+//error.c
 void	error_msg(int num);
-void	free_matrix(char **str);
 
-//MAP CHECKING
+//file_utils.c
+void	check_if_file_valid(char *map_path, t_map *map);
 bool	check_map_name(char *str);
-
-//FILE
 int		line_count(char *file_name);
 char	**ber_read(char *file_name, int size);
+void	free_matrix(char **str);
+
+//map_validation.c
+bool	check_invalid_char_map(char **str);
+void	set_map_char_count(t_map *map);
+bool	check_valid_number_of_chars(t_map *map);
+bool	is_rectangle_map(char **str);
+bool	check_wall_pos(char **str, int line_count, int last_index);
+
+//valid_path_check.c
+void	map_init(t_map *map);
+bool	check_valid_path(char **str);
+void	init_zero(t_map *map);
 
 #endif
