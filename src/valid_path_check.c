@@ -2,7 +2,6 @@
 
 void	map_init(t_map *map)
 {
-	init_zero(map);
 	set_map_char_count(map);
 	if (check_invalid_char_map(map->ber) == false)
 		return (free_matrix(map->ber), error_msg(5));

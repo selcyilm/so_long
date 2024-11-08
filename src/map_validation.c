@@ -112,6 +112,7 @@ bool	check_wall_pos(char **str, int line_count, int last_index)
 	int	i;
 	int	j;
 
+	ft_printf("x:%d y %d\n\n", line_count, last_index);
 	i = 0;
 	while (str[i])
 	{
@@ -124,7 +125,7 @@ bool	check_wall_pos(char **str, int line_count, int last_index)
 				return (false);
 			if (i == line_count - 1 && str[i][j] != '1')
 				return (false);
-			if (i == last_index && str[i][j] != '1')
+			if (j == last_index - 1 && str[i][j] != '1')
 				return (false);
 			j++;
 		}
