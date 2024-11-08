@@ -7,6 +7,7 @@ void	check_if_file_valid(char *map_path, t_map *map)
 		error_msg(2);
 	map->x = line_count(map_path);
 	map->ber = ber_read(map_path, map->x);
+	//geting segfault with emty file
 	map->y = ft_strlen(map->ber[0]) - 1;
 }
 

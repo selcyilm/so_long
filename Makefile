@@ -1,5 +1,5 @@
 NAME	= so_long
-CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 CC		= cc
 LIBMLX	= ./lib/MLX42
 LIBFT	= ./lib/libft/libft.a
