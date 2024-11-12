@@ -75,6 +75,10 @@ void	free_matrix(char **str)
 	if (!str || !*str)
 		return ;
 	while (str[i])
-			free(str[i++]);
+	{
+		if (str[i])
+			free(str[i]);
+		i++;
+	}
 	free(str);
 }

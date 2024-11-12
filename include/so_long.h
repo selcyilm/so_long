@@ -24,6 +24,8 @@ typedef struct s_map
 	int			p_cnt;
 	int			x;
 	int			y;
+	int			p_x;
+	int			p_y;
 }	t_map;
 
 //error.c
@@ -48,4 +50,10 @@ void	map_init(t_map *map);
 bool	check_valid_path(char **str);
 void	init_zero(t_map *map);
 
+//flood_fill.c
+void	set_start_pos(t_map *map);
+char	**flood_fill(char **ber, int x, int y);
+bool	valid_path_check(char **ber);
+void	apply_flood_fill(t_map *map);
+void	print_matrix(char **str);
 #endif

@@ -11,6 +11,8 @@ int	main(int ac, char **av)
 	while (map.ber[i])
 		ft_printf("%s", map.ber[i++]);
 	map_init(&map);
+	ft_printf("\n\n");
+	cover(&map);
 	free_matrix(map.ber);
 	map.ber = NULL;
 }
