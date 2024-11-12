@@ -66,17 +66,3 @@ char	**ber_read(char *file_name, int size)
 	close(fd);
 	return (ber);
 }
-
-
-//create to free 2d array
-void	free_matrix(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !*str)
-		return ;
-	while (str[i])
-			free(str[i++]);
-	free(str);
-}

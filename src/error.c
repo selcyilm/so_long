@@ -14,3 +14,24 @@ void	error_msg(int num)
 		ft_printf("Error\nInvalid Map!\n");
 	exit(1);
 }
+
+void	mlx_error(t_map *map)
+{
+	free_matrix(map->ber);
+	mlx_close_window(map->mlx);
+	mlx_terminate(map->mlx);
+	ft_printf("Error\n%s\n", mlx_strerror(mlx_errno));
+	exit(1);
+}
+
+void	free_matrix(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !*str)
+		return ;
+	while (str[i])
+			free(str[i++]);
+	free(str);
+}

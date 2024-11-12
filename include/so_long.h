@@ -30,13 +30,14 @@ typedef struct s_map
 
 //error.c
 void	error_msg(int num);
+void	mlx_error(t_map *map);
+void	free_matrix(char **str);
 
 //file_utils.c
 void	check_if_file_valid(char *map_path, t_map *map);
 bool	check_map_name(char *str);
 int		line_count(char *file_name);
 char	**ber_read(char *file_name, int size);
-void	free_matrix(char **str);
 
 //map_validation.c
 bool	check_invalid_char_map(char **str);
