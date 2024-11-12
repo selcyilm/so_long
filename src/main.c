@@ -7,12 +7,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		error_msg(1);
 	check_if_file_valid(av[1], &map);
-	int i = 0;
-	while (map.ber[i])
-		ft_printf("%s", map.ber[i++]);
 	map_init(&map);
-	ft_printf("\n\n");
-	cover(&map);
+	apply_flood_fill(&map);
 	free_matrix(map.ber);
 	map.ber = NULL;
 }

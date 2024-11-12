@@ -6,6 +6,8 @@ void	check_if_file_valid(char *map_path, t_map *map)
 	if (check_map_name(map_path) == false)
 		error_msg(2);
 	map->x = line_count(map_path);
+	if (map->x == 0)
+		return (error_msg(5));
 	map->ber = ber_read(map_path, map->x);
 	if (!map->ber)
 		map->y = ft_strlen(map->ber[0]) - 1;
@@ -75,10 +77,6 @@ void	free_matrix(char **str)
 	if (!str || !*str)
 		return ;
 	while (str[i])
-	{
-		if (str[i])
-			free(str[i]);
-		i++;
-	}
+			free(str[i++]);
 	free(str);
 }
