@@ -15,7 +15,7 @@ void	error_msg(int num)
 	exit(1);
 }
 
-void	mlx_error(t_map *map)
+void	error_msg_mlx(t_map *map)
 {
 	free_matrix(map->ber);
 	mlx_close_window(map->mlx);

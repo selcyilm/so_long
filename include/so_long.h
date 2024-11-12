@@ -30,7 +30,7 @@ typedef struct s_map
 
 //error.c
 void	error_msg(int num);
-void	mlx_error(t_map *map);
+void	error_msg_mlx(t_map *map);
 void	free_matrix(char **str);
 
 //file_utils.c
@@ -57,4 +57,11 @@ char	**flood_fill(char **ber, int x, int y);
 bool	valid_path_check(char **ber);
 void	apply_flood_fill(t_map *map);
 void	print_matrix(char **str);
+
+//image.c
+void	text_to_img(t_map *map, mlx_image_t *img, char *path);
+int		img_to_window(t_map *map, char c, int x, int y);
+void	init_images_depth(t_map *map);
+void	map_build(t_map *map);
+
 #endif

@@ -11,6 +11,7 @@ SRCS	=	./src/main.c \
 			./src/map_validation.c \
 			./src/valid_path_check.c \
 			./src/flood_fill.c \
+			./src/image.c \
 
 
 OBJS	= $(SRCS:.c=.o)
