@@ -99,10 +99,8 @@ void	apply_flood_fill(t_map *map)
 	char	**copy;
 	
 	copy = sl_strdup(map->ber, map);
-	//print_matrix(copy);
 	set_start_pos(map);
 	flood_fill(copy, map->p_x, map->p_y);
-	//print_matrix(copy);
 	if (!valid_path_check(copy))
 		return (free_matrix(map->ber), free_matrix(copy), error_msg(5));
 	free_matrix(copy);

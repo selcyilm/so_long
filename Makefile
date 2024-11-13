@@ -2,6 +2,7 @@ NAME	= so_long
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 CC		= cc
 LIBMLX	= ./lib/MLX42
+MLX42	= ./lib/MLX42/build/libmlx42.a
 LIBFT	= ./lib/libft/libft.a
 HEADERS	= -I ./lib/libft/ -I ./include -I $(LIBMLX)/include/
 LIBS	= $(LIBMLX)/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
@@ -12,6 +13,8 @@ SRCS	=	./src/main.c \
 			./src/valid_path_check.c \
 			./src/flood_fill.c \
 			./src/image.c \
+			./src/keys.c \
+			./src/check.c \
 
 
 OBJS	= $(SRCS:.c=.o)
@@ -35,16 +38,18 @@ COLOUR_GREEN=\033[35m
 COLOUR_BLUE=\033[0;36m
 COLOUR_ORANGE=\033[38;5;214m
 
-all: libmlx $(NAME)
+all: $(MLX42) $(LIBFT) $(NAME)
 
-libmlx:
+$(MLX42):
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
+$(LIBFT):
+	@$(MAKE) -s -C ./lib/libft all
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -s -C ./lib/libft all
 	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(LIBS) $(HEADERS) -o $(NAME)
 	@echo "$(CYAN)$$ASCII_TEXT$(RESET)"
 	@echo "\n$(COLOUR_ORANGE)Usage:$(RESET) $(COLOUR_GREEN)./so_long$(RESET) $(CYAN)<[map-file].ber>$(RESET)"
@@ -64,6 +69,6 @@ fclean: clean
 test:
 	$(CC) $(CFLAGS) tests/*.c -lcriterion $(LIBFT) include/so_long.h -o test_result
 
-re: clean all
+re: fclean all
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all, clean, fclean, re

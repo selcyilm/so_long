@@ -4,7 +4,8 @@
 # include "../lib/libft/libft.h"
 # include "../lib/libft/ft_printf/ft_printf.h"
 # include "../lib/libft/get_next_line/get_next_line.h"
-# include <MLX42/MLX42.h>
+# include "../lib/MLX42/include/MLX42/MLX42.h"
+//# include <MLX42/MLX42.h>
 # include <fcntl.h>
 # include <unistd.h>
 
@@ -26,6 +27,7 @@ typedef struct s_map
 	int			y;
 	int			p_x;
 	int			p_y;
+	int			move_cnt;
 }	t_map;
 
 //error.c
@@ -63,5 +65,16 @@ void	text_to_img(t_map *map, mlx_image_t **img, char *path);
 int		img_to_window(t_map *map, char c, int x, int y);
 void	init_images_depth(t_map *map);
 void	map_build(t_map *map);
+
+//keys.c
+void	move_up(t_map *map);
+void	move_right(t_map *map);
+void	move_left(t_map *map);
+void	move_down(t_map *map);
+void	move_key_hook(mlx_key_data_t key, void *param);
+
+//check.c
+bool	check_object(t_map *map, char object, int x, int y);
+void	check_collectable(t_map *map);
 
 #endif
