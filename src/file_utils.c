@@ -9,7 +9,7 @@ void	check_if_file_valid(char *map_path, t_map *map)
 	if (map->x == 0)
 		return (error_msg(5));
 	map->ber = ber_read(map_path, map->x);
-	if (!map->ber)
+	if (map->ber)
 		map->y = ft_strlen(map->ber[0]) - 1;
 }
 

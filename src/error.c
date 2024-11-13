@@ -12,6 +12,8 @@ void	error_msg(int num)
 		ft_printf("Error\nMalloc failed!\n");
 	else if (num == 5)
 		ft_printf("Error\nInvalid Map!\n");
+	else if (num == 6)
+		ft_printf("Error\nInit Minilibx!\n");
 	exit(1);
 }
 
