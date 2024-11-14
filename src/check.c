@@ -2,15 +2,15 @@
 
 void	change_pos(t_map *map, int x, int y)
 {
-	x /= 64;
-	y /= 64;
-	map->ber[x][y] = '0';
+	x /= PIXEL;
+	y /= PIXEL;
+	map->ber[y][x] = '0';
 }
 
 bool	check_object(t_map *map, char object, int x, int y)
 {
-	x += map->player->instances[0].x / 64;
-	y += map->player->instances[0].y / 64;
+	x += map->player->instances[0].x / PIXEL;
+	y += map->player->instances[0].y / PIXEL;
 
 	if (map->ber[y][x] == object)
 		return (true);
@@ -32,11 +32,11 @@ void	check_collectable(t_map *map)
 	else if (check_object(map, 'C', 0, 0))
 	{
 		i = 0;
-		while (map->player->instances[i].x != map->collect->instances[i].x &&
+		while (map->player->instances[0].x != map->collect->instances[i].x ||
 				map->player->instances[0].y != map->collect->instances[i].y)
 				i++;
 		map->collect->instances[i].enabled = false;
-		change_pos(map, map->collect->instances[i].y, map->collect->instances[i].x);
+		change_pos(map, map->collect->instances[i].x, map->collect->instances[i].y);
 		map->c_cnt--;
 		if (map->c_cnt == 0)
 		{

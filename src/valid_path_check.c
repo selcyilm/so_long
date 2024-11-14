@@ -11,14 +11,6 @@ void	map_init(t_map *map)
 		return (free_matrix(map->ber), error_msg(5));
 	else if (check_wall_pos(map->ber, map->x, map->y) == false)
 		return (free_matrix(map->ber), error_msg(5));
-	else if (check_valid_path(map->ber) == false)
-		return (free_matrix(map->ber), error_msg(5));
-}
-
-bool	check_valid_path(char **str)
-{
-	(void) str;
-	return (true);
 }
 
 void	init_zero(t_map *map)
@@ -30,4 +22,5 @@ void	init_zero(t_map *map)
 	map->w_cnt = 0;
 	map->x = 0;
 	map->y = 0;
+	map->move_cnt = 0;
 }

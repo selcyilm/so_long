@@ -9,6 +9,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+# define PIXEL 96
+
 typedef struct s_map
 {
 	mlx_t		*mlx;
@@ -30,6 +32,15 @@ typedef struct s_map
 	int			move_cnt;
 }	t_map;
 
+typedef enum e_depth
+{
+	LAYER_FLOOR,
+	LAYER_WALL,
+	LAYER_EXIT,
+	LAYER_COLLECTABLE,
+	LAYER_PLAYER
+}	t_depth;
+
 //error.c
 void	error_msg(int num);
 void	error_msg_mlx(t_map *map);
@@ -50,7 +61,6 @@ bool	check_wall_pos(char **str, int line_count, int last_index);
 
 //valid_path_check.c
 void	map_init(t_map *map);
-bool	check_valid_path(char **str);
 void	init_zero(t_map *map);
 
 //flood_fill.c

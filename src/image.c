@@ -9,6 +9,8 @@ void	text_to_img(t_map *map, mlx_image_t **img, char *path)
 	if (!(*img = mlx_texture_to_image(map->mlx, texture)))
 		error_msg_mlx(map);
 	mlx_delete_texture(texture);
+	if (!*img)
+		error_msg_mlx(map);
 }
 
 int	img_to_window(t_map *map, char c, int x, int y)
@@ -16,32 +18,21 @@ int	img_to_window(t_map *map, char c, int x, int y)
 	int	i;
 
 	i = -1;
-	x *= 64;
-	y *= 64;
+	x *= PIXEL;
+	y *= PIXEL;
 	if (c == '1')
 		i = mlx_image_to_window(map->mlx, map->wall, x, y);
-	else if (c == '0')
-		i = mlx_image_to_window(map->mlx, map->space, x, y);
-	else if (c == 'C')
+	else if (c == '0' || c == 'C' || c == 'P' || c == 'E')
 	{
-		i = mlx_image_to_window(map->mlx, map->collect, x, y);
+		i = mlx_image_to_window(map->mlx, map->space, x, y);
 		if (i < 0)
 			return (i);
-		i = mlx_image_to_window(map->mlx, map->space, x, y);
-	}
-	else if (c == 'P')
-	{
-		i = mlx_image_to_window(map->mlx, map->player, x, y);
-		if (i < 0)
-			return (i);
-		i = mlx_image_to_window(map->mlx, map->space, x, y);
-	}
-	else if (c == 'E')
-	{
-		i = mlx_image_to_window(map->mlx, map->exit, x, y);
-		if (i < 0)
-			return (i);
-		i = mlx_image_to_window(map->mlx, map->space, x, y);
+		if (c == 'C')
+			i = mlx_image_to_window(map->mlx, map->collect, x, y);
+		else if (c == 'P')
+			i = mlx_image_to_window(map->mlx, map->player, x, y);
+		else if (c == 'E')
+			i = mlx_image_to_window(map->mlx, map->exit, x, y);
 	}
 	return (i);
 }
@@ -75,16 +66,16 @@ void	init_images_depth(t_map *map)
 {
 	int	i;
 
-	map->player->instances[0].z = 3;
-	map->exit->instances[0].z = 1;
+	mlx_set_instance_depth(map->player->instances, LAYER_PLAYER);
+	mlx_set_instance_depth(map->exit->instances, LAYER_EXIT);
+	
 	i = 0;
 	while (i < map->s_cnt)
-		map->space->instances[i++].z = 0;
+		mlx_set_instance_depth(&map->space->instances[i++], LAYER_FLOOR);
 	i = 0;
 	while (i < map->w_cnt)
-		map->wall->instances[i++].z = 1;
+		mlx_set_instance_depth(&map->wall->instances[i++], LAYER_WALL);
 	i = 0;
 	while (i < map->c_cnt)
-		map->collect->instances[i++].z = 2;
+		mlx_set_instance_depth(&map->collect->instances[i++], LAYER_COLLECTABLE);
 }
-

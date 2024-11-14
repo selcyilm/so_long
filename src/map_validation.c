@@ -67,6 +67,7 @@ void	set_map_char_count(t_map *map)
 		}
 		i++;
 	}
+	map->s_cnt += map->c_cnt + map->p_cnt + map->e_cnt;
 }
 
 bool	check_valid_number_of_chars(t_map *map)
