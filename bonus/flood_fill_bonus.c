@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	set_start_pos(t_map *map)
 {
@@ -42,7 +42,7 @@ char	**flood_fill(char **ber, int x, int y)
 	if (ber[x][y] != '1')
 	{
 		if (ber[x][y] == '0' || ber[x][y] == 'P' || \
-		ber[x][y] == 'E' || ber[x][y] == 'C')
+		ber[x][y] == 'E' || ber[x][y] == 'C' || ber[x][y] == 'F')
 			ber[x][y] = '1';
 		else
 			return (ber);

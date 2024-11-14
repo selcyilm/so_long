@@ -1,4 +1,5 @@
 NAME	= so_long
+NAMEB	= so_long_bonus
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 CC		= cc
 LIBMLX	= ./lib/MLX42
@@ -16,8 +17,20 @@ SRCS	=	./src/main.c \
 			./src/keys.c \
 			./src/check.c \
 
+SRCSB	=	./bonus/main_bonus.c \
+			./bonus/file_utils_bonus.c \
+			./bonus/error_bonus.c \
+			./bonus/map_validation_bonus.c \
+			./bonus/valid_path_check_bonus.c \
+			./bonus/flood_fill_bonus.c \
+			./bonus/image_bonus.c \
+			./bonus/keys_bonus.c \
+			./bonus/check_bonus.c \
+			./bonus/message_move_bonus.c \
 
 OBJS	= $(SRCS:.c=.o)
+OBJSB	= $(SRCSB:.c=.o)
+
 
 #-----------------ASCI TEXT------------------#
 define ASCII_TEXT
@@ -55,15 +68,25 @@ $(NAME): $(OBJS)
 	@echo "\n$(COLOUR_ORANGE)Usage:$(RESET) $(COLOUR_GREEN)./so_long$(RESET) $(CYAN)<[map-file].ber>$(RESET)"
 	@echo "$(COLOUR_ORANGE)Let's Get Ready To Rumble!$(RESET)"
 
+$(NAMEB): $(OBJSB)
+	@$(CC) $(OBJSB) $(CFLAGS) $(LIBFT) $(LIBS) $(HEADERS) -o $(NAMEB)
+	@echo "$(CYAN)$$ASCII_TEXT$(RESET)"
+	@echo "\n$(COLOUR_ORANGE)Usage:$(RESET) $(COLOUR_GREEN)./so_long_bonus$(RESET) $(CYAN)<[map-file].ber>$(RESET)"
+	@echo "$(COLOUR_ORANGE)Let's Get Ready To Rumble For Bonus!$(RESET)"
+
+bonus: $(MLX42) $(LIBFT) $(NAMEB)
+
 clean:
 	@$(MAKE) -s -C lib/libft/ clean
 	@rm -rf $(LIBMLX)/build
 	@rm -rf $(OBJS)
+	@rm -rf $(OBJSB)
 	@echo "$(COLOUR_BLUE)CLEANING OBJECT FILES FOR SO_LONG..$(RESET)"
 
 fclean: clean
 	@$(MAKE) -s -C lib/libft/ fclean
 	@rm -rf $(NAME)
+	@rm -rf $(NAMEB)
 	@echo "$(COLOUR_BLUE)CLEANING EXECUTABLE FOR SO_LONG..$(RESET)"
 
 test:
