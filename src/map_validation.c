@@ -1,22 +1,16 @@
-#include "../include/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   map_validation.c                                    :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: selcyilm <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2024/11/14 21:28:29 by selcyilm       #+#    #+#                */
+/*   Updated: 2024/11/14 21:28:31 by selcyilm       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-* MAP
-* The map can be composed of only these 5 characters:
-* 0 for an empty space,
-* 1 for a wall,
-* C for a collectible,
-* E for a map exit,
-* P for the player’s starting position.
-*
-* The map must contain 1 exit, at least 1 collectible, and 1 starting position to
-* be valid.
-* The map must be rectangular.
-* The map must be closed/surrounded by walls. If it’s not, the program must return
-* an error.
-* You have to check if there’s a valid path in the map.
-* You must be able to parse any kind of map, as long as it respects the above rules.
-*/
+#include "../include/so_long.h"
 
 //check for invalid char in the map
 bool	check_invalid_char_map(char **str)
@@ -41,6 +35,7 @@ bool	check_invalid_char_map(char **str)
 	}
 	return (true);
 }
+
 //create a function for how many char in this map and use them for every char
 void	set_map_char_count(t_map *map)
 {
@@ -48,7 +43,7 @@ void	set_map_char_count(t_map *map)
 	int	j;
 
 	i = 0;
-	while(map->ber[i])
+	while (map->ber[i])
 	{
 		j = 0;
 		while (map->ber[i][j])

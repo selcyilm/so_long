@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   error.c                                             :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: selcyilm <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2024/11/14 21:15:51 by selcyilm       #+#    #+#                */
+/*   Updated: 2024/11/14 21:15:52 by selcyilm       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 void	error_msg(int num)
@@ -34,6 +46,6 @@ void	free_matrix(char **str)
 	if (!str || !*str)
 		return ;
 	while (str[i])
-			free(str[i++]);
+		free(str[i++]);
 	free(str);
 }

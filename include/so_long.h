@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   so_long.h                                           :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: selcyilm <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2024/11/14 21:44:29 by selcyilm       #+#    #+#                */
+/*   Updated: 2024/11/14 21:44:31 by selcyilm       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <stdio.h>
@@ -65,10 +77,10 @@ void	init_zero(t_map *map);
 
 //flood_fill.c
 void	set_start_pos(t_map *map);
+char	**sl_strdup(char **ber, t_map *map);
 char	**flood_fill(char **ber, int x, int y);
 bool	valid_path_check(char **ber);
 void	apply_flood_fill(t_map *map);
-void	print_matrix(char **str);
 
 //image.c
 void	text_to_img(t_map *map, mlx_image_t **img, char *path);
@@ -86,5 +98,7 @@ void	move_key_hook(mlx_key_data_t key, void *param);
 //check.c
 bool	check_object(t_map *map, char object, int x, int y);
 void	check_collectable(t_map *map);
+void	change_exit(t_map *map);
+void	change_player(t_map *map, char *path);
 
 #endif

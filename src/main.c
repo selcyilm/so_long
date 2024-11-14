@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   main.c                                              :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: selcyilm <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2024/11/14 21:13:03 by selcyilm       #+#    #+#                */
+/*   Updated: 2024/11/14 21:13:05 by selcyilm       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 int	main(int ac, char **av)
@@ -13,6 +25,7 @@ int	main(int ac, char **av)
 	if (!map.mlx)
 		return (free_matrix(map.ber), error_msg(6), 1);
 	map_build(&map);
+	ft_printf("\tWe're not here to take part, we're here to take over.\n");
 	mlx_key_hook(map.mlx, &move_key_hook, &map);
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);

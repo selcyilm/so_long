@@ -1,16 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   image.c                                             :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: selcyilm <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2024/11/14 21:24:04 by selcyilm       #+#    #+#                */
+/*   Updated: 2024/11/14 21:24:05 by selcyilm       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 void	text_to_img(t_map *map, mlx_image_t **img, char *path)
 {
-	mlx_texture_t *texture;
+	mlx_texture_t	*texture;
 
 	if (!(texture = mlx_load_png(path)))
 		error_msg_mlx(map);
 	if (!(*img = mlx_texture_to_image(map->mlx, texture)))
 		error_msg_mlx(map);
 	mlx_delete_texture(texture);
-	if (!*img)
-		error_msg_mlx(map);
 }
 
 int	img_to_window(t_map *map, char c, int x, int y)
@@ -68,7 +78,6 @@ void	init_images_depth(t_map *map)
 
 	mlx_set_instance_depth(map->player->instances, LAYER_PLAYER);
 	mlx_set_instance_depth(map->exit->instances, LAYER_EXIT);
-	
 	i = 0;
 	while (i < map->s_cnt)
 		mlx_set_instance_depth(&map->space->instances[i++], LAYER_FLOOR);
@@ -77,5 +86,6 @@ void	init_images_depth(t_map *map)
 		mlx_set_instance_depth(&map->wall->instances[i++], LAYER_WALL);
 	i = 0;
 	while (i < map->c_cnt)
-		mlx_set_instance_depth(&map->collect->instances[i++], LAYER_COLLECTABLE);
+		mlx_set_instance_depth(&map->collect->instances[i++],
+			LAYER_COLLECTABLE);
 }
