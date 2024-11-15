@@ -42,6 +42,8 @@ typedef struct s_map
 	int			p_x;
 	int			p_y;
 	int			move_cnt;
+	int			collect_flood;
+	int			e_pos;
 }	t_map;
 
 typedef enum e_depth
@@ -78,8 +80,8 @@ void	init_zero(t_map *map);
 //flood_fill.c
 void	set_start_pos(t_map *map);
 char	**sl_strdup(char **ber, t_map *map);
-char	**flood_fill(char **ber, int x, int y);
-bool	valid_path_check(char **ber);
+void	flood_fill(t_map *map, char **ber, int x, int y);
+bool	valid_path_check(t_map *map);
 void	apply_flood_fill(t_map *map);
 
 //image.c

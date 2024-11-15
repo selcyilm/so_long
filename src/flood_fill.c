@@ -37,41 +37,25 @@ void	set_start_pos(t_map *map)
 	}
 }
 
-char	**flood_fill(char **ber, int x, int y)
+void	flood_fill(t_map *map, char **ber, int x, int y)
 {
-	if (ber[x][y] != '1')
-	{
-		if (ber[x][y] == '0' || ber[x][y] == 'P' || \
-		ber[x][y] == 'E' || ber[x][y] == 'C')
-			ber[x][y] = '1';
-		else
-			return (ber);
-		flood_fill(ber, x + 1, y);
-		flood_fill(ber, x - 1, y);
-		flood_fill(ber, x, y + 1);
-		flood_fill(ber, x, y - 1);
-	}
-	return (ber);
+	if (ber[x][y] == '1' || ber[x][y] == 'F')
+		return ;
+	if (ber[x][y] == 'C')
+		map->collect_flood--;
+	if (ber[x][y] == 'E')
+		map->e_pos = 1;
+	ber[x][y] = '1';
+	flood_fill(map, ber, x + 1, y);
+	flood_fill(map, ber, x - 1, y);
+	flood_fill(map, ber, x, y + 1);
+	flood_fill(map, ber, x, y - 1);
 }
 
-bool	valid_path_check(char **ber)
+bool	valid_path_check(t_map *map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (ber[i])
-	{
-		j = 0;
-		while (ber[i][j] && ber[i][j] != '\n')
-		{
-			if (ber[i][j] != '1')
-				return (false);
-			j++;
-		}
-		i++;
-	}
+	if (map->e_pos != 1 || map->collect_flood != 0)
+		return (false);
 	return (true);
 }
 
@@ -100,8 +84,9 @@ void	apply_flood_fill(t_map *map)
 
 	copy = sl_strdup(map->ber, map);
 	set_start_pos(map);
-	flood_fill(copy, map->p_x, map->p_y);
-	if (!valid_path_check(copy))
+	map->collect_flood = map->c_cnt;
+	flood_fill(map, copy, map->p_x, map->p_y);
+	if (!valid_path_check(map))
 		return (free_matrix(map->ber), free_matrix(copy), error_msg(5));
 	free_matrix(copy);
 }

@@ -35,4 +35,6 @@ void	init_zero(t_map *map)
 	map->x = 0;
 	map->y = 0;
 	map->move_cnt = 0;
+	map->collect_flood = 0;
+	map->e_pos = 0;
 }
