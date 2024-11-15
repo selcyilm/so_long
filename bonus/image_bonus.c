@@ -16,9 +16,11 @@ void	text_to_img(t_map *map, mlx_image_t **img, char *path)
 {
 	mlx_texture_t	*texture;
 
-	if (!(texture = mlx_load_png(path)))
+	texture = mlx_load_png(path);
+	if (!texture)
 		error_msg_mlx(map);
-	if (!(*img = mlx_texture_to_image(map->mlx, texture)))
+	*img = mlx_texture_to_image(map->mlx, texture);
+	if (!*img)
 		error_msg_mlx(map);
 	mlx_delete_texture(texture);
 }

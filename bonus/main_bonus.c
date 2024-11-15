@@ -21,11 +21,12 @@ int	main(int ac, char **av)
 	check_if_file_valid(av[1], &map);
 	map_init(&map);
 	apply_flood_fill(&map);
-	map.mlx = mlx_init(map.y * PIXEL, map.x * PIXEL, "SO_LONG", true);
+	map.mlx = mlx_init(map.y * PIXEL, map.x * PIXEL + 40, "SO_LONG", true);
 	if (!map.mlx)
 		return (free_matrix(map.ber), error_msg(6), 1);
 	map_build(&map);
 	ft_printf("\tWe're not here to take part, we're here to take over.\n");
+	map.message = mlx_put_string(map.mlx, "0", 80, map.x * PIXEL);
 	mlx_key_hook(map.mlx, &move_key_hook, &map);
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);

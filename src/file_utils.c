@@ -46,13 +46,17 @@ int	line_count(char *file_name)
 	char	*line;
 	int		fd;
 
-	if ((fd = open(file_name, O_RDONLY)) == -1)
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
 		error_msg(3);
 	i = 0;
-	while ((line = get_next_line(fd)) != 0)
+	while (1)
 	{
-		i++;
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		free(line);
+		i++;
 	}
 	close(fd);
 	return (i);
@@ -65,16 +69,25 @@ char	**ber_read(char *file_name, int size)
 	char	**ber;
 	int		fd;
 
-	if ((fd = open(file_name, O_RDONLY)) == -1)
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
 		error_msg(3);
 	ber = ft_calloc(sizeof(char *), size + 1);
 	if (ber == NULL)
 		error_msg(4);
 	i = 0;
-	while ((ber[i] = get_next_line(fd)) != NULL)
+	while (1)
+	{
+		ber[i] = get_next_line(fd);
+		if (!ber[i])
+			break ;
 		i++;
+	}
 	if (i != size)
+	{
+		close(fd);
 		return (free_matrix(ber), error_msg(4), NULL);
+	}
 	close(fd);
 	return (ber);
 }

@@ -42,11 +42,11 @@ void	set_map_char_count(t_map *map)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (map->ber[i])
+	i = -1;
+	while (map->ber[++i])
 	{
-		j = 0;
-		while (map->ber[i][j])
+		j = -1;
+		while (map->ber[i][++j])
 		{
 			if (map->ber[i][j] == '0')
 				map->s_cnt++;
@@ -60,9 +60,7 @@ void	set_map_char_count(t_map *map)
 				map->p_cnt++;
 			else if (map->ber[i][j] == 'F')
 				map->v_cnt++;
-			j++;
 		}
-		i++;
 	}
 	map->s_cnt += map->c_cnt + map->p_cnt + map->e_cnt + map->v_cnt;
 }

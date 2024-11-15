@@ -21,7 +21,6 @@ void	move_up(t_map *map)
 	}
 	map->player->instances[0].y -= PIXEL;
 	map->move_cnt++;
-	ft_printf("Move: %d\n", map->move_cnt);
 	if (check_object(map, 'F', 0, 0))
 	{
 		ft_printf("GAME OVER!\n");
@@ -41,7 +40,6 @@ void	move_right(t_map *map)
 	}
 	map->player->instances[0].x += PIXEL;
 	map->move_cnt++;
-	ft_printf("Move: %d\n", map->move_cnt);
 	if (check_object(map, 'F', 0, 0))
 	{
 		ft_printf("GAME OVER!\n");
@@ -61,7 +59,6 @@ void	move_left(t_map *map)
 	}
 	map->player->instances[0].x -= PIXEL;
 	map->move_cnt++;
-	ft_printf("Move: %d\n", map->move_cnt);
 	if (check_object(map, 'F', 0, 0))
 	{
 		ft_printf("GAME OVER!\n");
@@ -106,6 +103,6 @@ void	move_key_hook(mlx_key_data_t key, void *param)
 			move_down(map);
 		else if (key.key == MLX_KEY_ESCAPE)
 			mlx_close_window(map->mlx);
-		//msg_moves_screen(map);
+		msg_moves_screen(map);
 	}
 }

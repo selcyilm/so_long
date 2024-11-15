@@ -31,7 +31,7 @@ typedef struct s_map
 	mlx_image_t	*space;
 	mlx_image_t	*collect;
 	mlx_image_t	*villain;
-	//mlx_image_t	*message;
+	mlx_image_t	*message;
 	char		**ber;
 	int			s_cnt;
 	int			w_cnt;
@@ -44,6 +44,8 @@ typedef struct s_map
 	int			p_x;
 	int			p_y;
 	int			move_cnt;
+	int			e_pos;
+	int			collectable_flood;
 }	t_map;
 
 typedef enum e_depth
@@ -80,8 +82,8 @@ void	init_zero(t_map *map);
 //flood_fill.c
 void	set_start_pos(t_map *map);
 char	**sl_strdup(char **ber, t_map *map);
-char	**flood_fill(char **ber, int x, int y);
-bool	valid_path_check(char **ber);
+void	flood_fill(t_map *map, char **ber, int x, int y);
+bool	valid_path_check(t_map *map);
 void	apply_flood_fill(t_map *map);
 
 //image.c
@@ -104,6 +106,6 @@ void	change_exit(t_map *map);
 void	change_player(t_map *map, char *path);
 
 //message_move.c
-//void	msg_moves_screen(t_map *map);
+void	msg_moves_screen(t_map *map);
 
 #endif

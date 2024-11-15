@@ -61,18 +61,19 @@ $(LIBFT):
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	@echo "$(COLOUR_GREEN)CREATING $@$(COLOUR_END)"
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(LIBS) $(HEADERS) -o $(NAME)
 	@echo "$(CYAN)$$ASCII_TEXT$(RESET)"
 	@echo "\n$(COLOUR_ORANGE)Usage:$(RESET) $(COLOUR_GREEN)./so_long$(RESET) $(CYAN)<[map-file].ber>$(RESET)"
-	@echo "$(COLOUR_ORANGE)Let's Get Ready To Rumble!$(RESET)"
+	@echo "$(COLOUR_ORANGE)It's timee!$(RESET)"
 
 $(NAMEB): $(OBJSB)
 	@$(CC) $(OBJSB) $(CFLAGS) $(LIBFT) $(LIBS) $(HEADERS) -o $(NAMEB)
 	@echo "$(CYAN)$$ASCII_TEXT$(RESET)"
 	@echo "\n$(COLOUR_ORANGE)Usage:$(RESET) $(COLOUR_GREEN)./so_long_bonus$(RESET) $(CYAN)<[map-file].ber>$(RESET)"
-	@echo "$(COLOUR_ORANGE)Let's Get Ready To Rumble For Bonus!$(RESET)"
+	@echo "$(COLOUR_ORANGE)It's Timee For Bonus!$(RESET)"
 
 bonus: $(MLX42) $(LIBFT) $(NAMEB)
 
