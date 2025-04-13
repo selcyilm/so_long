@@ -30,6 +30,10 @@ so_long is a simple 2D game developed using the MLX42 library. The objective of 
 
 ![Game Demo](gif/Animation.gif)
 
+## Play
+
+You can play the game on [Here](https://selcyilm.github.io/project-so_long/).
+
 ## Controls
 
 - **W**: Move up
