@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   main.c                                              :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: selcyilm <marvin@42.fr>                       +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2024/11/14 21:13:03 by selcyilm       #+#    #+#                */
-/*   Updated: 2024/11/14 21:13:05 by selcyilm       ########   odam.nl        */
+/*                                                        ::::::::            */
+/*   main_bonus.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: selcyilm <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/11/14 21:13:03 by selcyilm      #+#    #+#                 */
+/*   Updated: 2025/04/13 22:03:57 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
+
+
+
+void	display_menu()
+{
+	
+}
+
+void	init_menu()
+{
+	
+}
+
+void	listen_menu()
+{
+
+}
+
+void	key_menu()
+{
+
+}
+
 
 int	main(int ac, char **av)
 {

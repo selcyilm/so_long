@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   so_long.h                                           :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: selcyilm <marvin@42.fr>                       +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2024/11/14 21:44:29 by selcyilm       #+#    #+#                */
-/*   Updated: 2024/11/14 21:44:31 by selcyilm       ########   odam.nl        */
+/*                                                        ::::::::            */
+/*   so_long_bonus.h                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: selcyilm <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/11/14 21:44:29 by selcyilm      #+#    #+#                 */
+/*   Updated: 2025/04/13 22:54:59 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_map
 	mlx_image_t	*collect;
 	mlx_image_t	*villain;
 	mlx_image_t	*message;
+	mlx_image_t	*background;
+	mlx_image_t	*won;
 	char		**ber;
 	int			s_cnt;
 	int			w_cnt;
@@ -52,7 +54,9 @@ typedef enum e_depth
 	LAYER_WALL,
 	LAYER_EXIT,
 	LAYER_COLLECTABLE,
-	LAYER_PLAYER
+	LAYER_PLAYER,
+	LAYER_MENU,
+	LAYER_WON
 }	t_depth;
 
 //error.c

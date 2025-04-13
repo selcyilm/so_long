@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   image.c                                             :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: selcyilm <marvin@42.fr>                       +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2024/11/14 21:24:04 by selcyilm       #+#    #+#                */
-/*   Updated: 2024/11/14 21:24:05 by selcyilm       ########   odam.nl        */
+/*                                                        ::::::::            */
+/*   image_bonus.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: selcyilm <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/11/14 21:24:04 by selcyilm      #+#    #+#                 */
+/*   Updated: 2025/04/13 22:59:13 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ void	map_build(t_map *map)
 	int	y;
 
 	x = 0;
+	text_to_img(map, &map->background, "./textures/main_menu.png");
+	text_to_img(map, &map->won, "./textures/you_won.png");
+	if (mlx_image_to_window(map->mlx, map->background, 0, 0))
+		return (error_msg_mlx(map));
+	if (mlx_image_to_window(map->mlx, map->won, 0, 0))
+		return (error_msg_mlx(map));
+	map->won->instances->enabled = false;
 	text_to_img(map, &map->wall, "./textures/wall.png");
 	text_to_img(map, &map->collect, "./textures/collect.png");
 	text_to_img(map, &map->space, "./textures/space.png");
@@ -81,6 +88,8 @@ void	init_images_depth(t_map *map)
 {
 	int	i;
 
+	mlx_set_instance_depth(map->background->instances, LAYER_MENU);
+	mlx_set_instance_depth(map->won->instances, LAYER_WON);
 	mlx_set_instance_depth(map->player->instances, LAYER_PLAYER);
 	mlx_set_instance_depth(map->exit->instances, LAYER_EXIT);
 	i = 0;

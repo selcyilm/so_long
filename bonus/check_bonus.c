@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   check.c                                             :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: selcyilm <marvin@42.fr>                       +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2024/11/14 21:13:40 by selcyilm       #+#    #+#                */
-/*   Updated: 2024/11/14 21:13:41 by selcyilm       ########   odam.nl        */
+/*                                                        ::::::::            */
+/*   check_bonus.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: selcyilm <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/11/14 21:13:40 by selcyilm      #+#    #+#                 */
+/*   Updated: 2025/04/13 23:02:26 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_collectable(t_map *map)
 		if (check_object(map, 'E', 0, 0))
 		{
 			map->player->instances[0].enabled = false;
+			map->won->instances->enabled = true;
 			mlx_close_window(map->mlx);
 			ft_printf("\tSurprise, surprise! The King is back!\n");
 		}
